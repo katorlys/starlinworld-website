@@ -44,7 +44,6 @@ Build for preview:
 pnpm build
 pnpm preview
 ```
-The docs search function can only be tested in preview mode, as it can only generate data during the build process.
 
 <!-- /Main Body -->
 

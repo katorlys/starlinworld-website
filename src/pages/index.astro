@@ -57,8 +57,7 @@ const slides = [
 
       <!-- Header for index -->
       <header
-        class="absolute top-10 left-10 z-40 bg-background py-3 px-6 pr-12"
-        style="border-bottom-right-radius: 32px;"
+        class="inverted-corners absolute top-10 left-10 z-40 bg-background py-3 px-6 pr-12 rounded-br-4xl"
       >
         <nav class="flex items-center gap-16">
           <a href="/" class="flex items-center">
@@ -147,8 +146,7 @@ const slides = [
 
       <!-- CopyButton -->
       <div
-        class="absolute bottom-10 right-10 z-40 bg-background p-8"
-        style="border-top-left-radius: 32px;"
+        class="inverted-corners absolute bottom-10 right-10 z-40 bg-background p-8 rounded-tl-4xl"
       >
         <CopyButton />
       </div>
@@ -355,3 +353,34 @@ const slides = [
       const mobileAutoPlayInterval = setInterval(mobileNextSlide, 5000);
     </script>
 </Layout>
+
+<style>
+  .inverted-corners {
+    --notch: 32px;
+    --corner-color: var(--color-background);
+  }
+
+  .inverted-corners::before,
+  .inverted-corners::after {
+    content: "";
+    position: absolute;
+    width: var(--notch);
+    height: var(--notch);
+    background: radial-gradient(
+      circle at 100% 100%,
+      transparent var(--notch),
+      var(--corner-color) calc(var(--notch) + 0.5px)
+    );
+    pointer-events: none;
+  }
+
+  .inverted-corners::before {
+    top: 0;
+    right: calc(var(--notch) * -1);
+  }
+
+  .inverted-corners::after {
+    left: 0;
+    bottom: calc(var(--notch) * -1);
+  }
+</style>
